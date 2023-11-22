@@ -5,6 +5,12 @@ plugins {
 
 kotlin {
 	jvm()
+
+	val commonMain by sourceSets.getting {
+		dependencies {
+			implementation(libs.uuid)
+		}
+	}
 }
 
 library {

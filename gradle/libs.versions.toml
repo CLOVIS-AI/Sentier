@@ -1,9 +1,11 @@
 # List of dependencies of the project
 
 [versions]
+uuid = "0.8.2"
 
 [plugins]
 
 [libraries]
+uuid = { module = "com.benasher44:uuid", version.ref = "uuid" }
 
 [bundles]
