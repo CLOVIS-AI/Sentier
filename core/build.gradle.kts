@@ -5,12 +5,18 @@ plugins {
 
 kotlin {
 	jvm()
+
+	val commonMain by sourceSets.getting {
+		dependencies {
+			implementation(libs.uuid)
+		}
+	}
 }
 
 library {
-	name.set("Playground Core")
-	description.set("Project template with configured MavenCentral publication")
-	homeUrl.set("https://gitlab.com/opensavvy/playgrounds/gradle")
+	name.set("Sentier")
+	description.set("Kotlin Multiplatform observability API")
+	homeUrl.set("https://gitlab.com/opensavvy/sentier")
 
 	license.set {
 		name.set("Apache 2.0")
