@@ -30,4 +30,5 @@ include(
 	"gradle:templates:template-lib",
 
 	"core",
+	"compat-coroutines",
 )
