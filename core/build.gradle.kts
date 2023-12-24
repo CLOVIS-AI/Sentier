@@ -5,6 +5,14 @@ plugins {
 
 kotlin {
 	jvm()
+	js(IR) {
+		browser()
+		nodejs()
+	}
+	linuxX64()
+	iosArm64()
+	iosSimulatorArm64()
+	iosX64()
 
 	val commonMain by sourceSets.getting {
 		dependencies {
