@@ -16,14 +16,15 @@ kotlin {
 
 	val commonMain by sourceSets.getting {
 		dependencies {
-			implementation(libs.uuid)
+			api(projects.core)
+			api(libs.kotlinx.coroutines)
 		}
 	}
 }
 
 library {
-	name.set("Sentier")
-	description.set("Kotlin Multiplatform observability API")
+	name.set("Sentier for KotlinX.Coroutines")
+	description.set("Kotlin Multiplatform observability API embedded in KotlinX.Coroutines")
 	homeUrl.set("https://gitlab.com/opensavvy/sentier")
 
 	license.set {

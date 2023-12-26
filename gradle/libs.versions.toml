@@ -2,10 +2,12 @@
 
 [versions]
 uuid = "0.8.2"
+coroutines = "1.7.3"
 
 [plugins]
 
 [libraries]
 uuid = { module = "com.benasher44:uuid", version.ref = "uuid" }
+kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 
 [bundles]

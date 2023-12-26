@@ -1,5 +1,7 @@
 package opensavvy.sentier.core
 
+import kotlin.jvm.JvmInline
+
 /**
  * Lightweight wrapper to transmit the [currentTask] through function call hierarchies.
  *

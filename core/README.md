@@ -19,7 +19,7 @@ Optionally, also configure the [log level][opensavvy.sentier.core.Sentier.logLev
 
 ## Usage
 
-Start by [instantiating a logger instance][opensavvy.sentier.core.Sendier.loggerFor]:
+Start by [instantiating a logger instance][opensavvy.sentier.core.Sentier.loggerFor]:
 ```kotlin
 class Foo {
 	private val logger = Sentier.loggerFor(this)
