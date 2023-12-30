@@ -68,8 +68,14 @@ class Task internal constructor(
 		/**
 		 * Instantiates a [Task] for a given [id].
 		 *
-		 * Use this function to generate a [Task] object for a task created across a system boundary (e.g. a client-side task).
+		 * Use this function to generate a [Task] object for a task created across a system boundary
+		 * (e.g. a client-side task).
 		 */
 		fun remote(id: String) = Task(TaskId(id), TaskId.Root)
 	}
 }
+
+/**
+ * Creates a child with ID [id] of the current task.
+ */
+fun Task.withChild(id: TaskId) = Task(id, parent = this.id)

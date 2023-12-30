@@ -47,7 +47,9 @@ value class TaskScope(val currentTask: Task) {
 			val task = currentTask.createChild()
 			forceStart(description(), task, level)
 			try {
-				val result = block()
+				val result = with(TaskScope(task)) {
+					block()
+				}
 				forceEnd(result, task, outcome = decideOutcome(result), level)
 				result
 			} catch (e: Throwable) {

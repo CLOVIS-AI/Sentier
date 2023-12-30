@@ -3,11 +3,13 @@
 [versions]
 uuid = "0.8.2"
 coroutines = "1.7.3"
+prepared = "0.6.0"
 
 [plugins]
 
 [libraries]
 uuid = { module = "com.benasher44:uuid", version.ref = "uuid" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+prepared-kotest = { module = "dev.opensavvy.prepared:runner-kotest", version.ref = "prepared" }
 
 [bundles]

@@ -31,4 +31,5 @@ include(
 
 	"core",
 	"compat-coroutines",
+	"compat-threading",
 )
