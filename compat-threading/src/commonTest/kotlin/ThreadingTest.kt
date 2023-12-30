@@ -6,5 +6,6 @@ import opensavvy.prepared.runner.kotest.preparedSuite
 class ThreadingTest : StringSpec({
 	preparedSuite {
 		currentTaskTests()
+		methodsTests()
 	}
 })

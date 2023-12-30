@@ -2,6 +2,7 @@ package opensavvy.sentier.threads
 
 import opensavvy.sentier.core.Task
 import opensavvy.sentier.core.TaskId
+import opensavvy.sentier.core.TaskScope
 
 /**
  * Accesses the current [Task].
@@ -33,3 +34,9 @@ expect fun pushCurrentTask(child: TaskId)
  */
 @DelicateTaskApi
 expect fun popCurrentTask(child: TaskId)
+
+/**
+ * Executes [block] in a [TaskScope] instantiated from the [currentTask].
+ */
+inline fun <T> withCurrentTask(block: TaskScope.() -> T) =
+	with(TaskScope(currentTask()), block)
