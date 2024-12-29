@@ -13,12 +13,6 @@ kotlin {
 	iosArm64()
 	iosSimulatorArm64()
 	iosX64()
-
-	val commonMain by sourceSets.getting {
-		dependencies {
-			implementation(libs.uuid)
-		}
-	}
 }
 
 library {
