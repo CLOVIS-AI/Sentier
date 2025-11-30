@@ -38,5 +38,5 @@ expect fun popCurrentTask(child: TaskId)
 /**
  * Executes [block] in a [TaskScope] instantiated from the [currentTask].
  */
-inline fun <T> withCurrentTask(block: TaskScope.() -> T) =
+inline fun <T> withCurrentTask(block: context(TaskScope) () -> T) =
 	with(TaskScope(currentTask()), block)

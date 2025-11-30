@@ -1,6 +1,7 @@
 plugins {
 	alias(opensavvyConventions.plugins.base)
 	alias(opensavvyConventions.plugins.kotlin.library)
+	alias(libsCommon.plugins.testBalloon)
 }
 
 kotlin {
@@ -13,6 +14,17 @@ kotlin {
 	iosArm64()
 	iosSimulatorArm64()
 	iosX64()
+
+	sourceSets.commonTest.dependencies {
+		implementation(libsCommon.opensavvy.prepared.testBalloon)
+		implementation(libsCommon.kotlin.test)
+	}
+
+	sourceSets.all {
+		languageSettings {
+			enableLanguageFeature("ContextParameters")
+		}
+	}
 }
 
 library {
