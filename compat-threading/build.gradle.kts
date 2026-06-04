@@ -7,16 +7,12 @@ plugins {
 kotlin {
 	jvm()
 
-	sourceSets.commonMain {
-		dependencies {
-			api(projects.core)
-		}
+	sourceSets.commonMain.dependencies {
+		api(projects.core)
 	}
 
-	sourceSets.commonTest {
-		dependencies {
-			implementation(libsCommon.bundles.testBalloon)
-		}
+	sourceSets.commonTest.dependencies {
+		implementation(libsCommon.bundles.testBalloon)
 	}
 }
 

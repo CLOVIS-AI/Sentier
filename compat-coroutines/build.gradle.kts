@@ -29,17 +29,13 @@ kotlin {
 		nodejs()
 	}
 
-	val commonMain by sourceSets.getting {
-		dependencies {
-			api(projects.core)
-			api(libs.kotlinx.coroutines)
-		}
+	sourceSets.commonMain.dependencies {
+		api(projects.core)
+		api(libs.kotlinx.coroutines)
 	}
 
-	val commonTest by sourceSets.getting {
-		dependencies {
-			implementation(libsCommon.bundles.testBalloon)
-		}
+	sourceSets.commonTest.dependencies {
+		implementation(libsCommon.bundles.testBalloon)
 	}
 }
 
