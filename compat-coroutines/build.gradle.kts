@@ -20,12 +20,6 @@ kotlin {
 			api(libs.kotlinx.coroutines)
 		}
 	}
-
-	sourceSets.all {
-		languageSettings {
-			enableLanguageFeature("ContextParameters")
-		}
-	}
 }
 
 library {

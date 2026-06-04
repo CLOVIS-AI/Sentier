@@ -17,12 +17,6 @@ kotlin {
 			implementation(libs.prepared.kotest)
 		}
 	}
-
-	sourceSets.all {
-		languageSettings {
-			enableLanguageFeature("ContextParameters")
-		}
-	}
 }
 
 library {
