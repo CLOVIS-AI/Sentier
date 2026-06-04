@@ -1,7 +1,8 @@
 # List of dependencies of the project
 
 [versions]
-coroutines = "1.7.3"
+# https://github.com/Kotlin/kotlinx.coroutines/releases
+coroutines = "1.11.0"
 prepared = "0.6.0"
 
 [plugins]
