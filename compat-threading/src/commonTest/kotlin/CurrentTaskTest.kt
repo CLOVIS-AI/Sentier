@@ -1,10 +1,8 @@
 package opensavvy.sentier.threads
 
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 import kotlinx.coroutines.withContext
 import opensavvy.prepared.suite.SuiteDsl
+import opensavvy.prepared.suite.assertions.checkThrows
 import opensavvy.prepared.suite.prepared
 import opensavvy.sentier.core.Task
 import opensavvy.sentier.core.TaskId
@@ -16,7 +14,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 
 	test("The default current task is the root task") {
 		withContext(thread1()) {
-			currentTask() shouldBe Task.Root
+			check(currentTask() == Task.Root)
 		}
 	}
 
@@ -26,7 +24,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 		}
 
 		withContext(thread2()) {
-			currentTask().id shouldNotBe randomTaskId()
+			check(currentTask().id != randomTaskId())
 		}
 	}
 
@@ -43,7 +41,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 				applyDepth()
 
 				pushCurrentTask(randomTaskId())
-				currentTask().id shouldBe randomTaskId()
+				check(currentTask().id == randomTaskId())
 			}
 		}
 
@@ -54,7 +52,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 				val current = currentTask()
 				pushCurrentTask(randomTaskId())
 				popCurrentTask(randomTaskId())
-				currentTask() shouldBe current
+				check(currentTask() == current)
 			}
 		}
 
@@ -62,7 +60,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 			withContext(thread1()) {
 				applyDepth()
 
-				shouldThrow<IllegalArgumentException> {
+				checkThrows<IllegalArgumentException> {
 					pushCurrentTask(TaskId.Root)
 				}
 			}
@@ -72,7 +70,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 			withContext(thread1()) {
 				applyDepth()
 
-				shouldThrow<IllegalArgumentException> {
+				checkThrows<IllegalArgumentException> {
 					popCurrentTask(TaskId.Root)
 				}
 			}
@@ -83,7 +81,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 				applyDepth()
 				pushCurrentTask(randomTaskId())
 
-				shouldThrow<IllegalStateException> {
+				checkThrows<IllegalStateException> {
 					popCurrentTask(TaskId())
 				}
 			}
@@ -96,7 +94,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 			val previous = currentTask()
 			pushCurrentTask(TaskId())
 
-			shouldThrow<IllegalStateException> {
+			checkThrows<IllegalStateException> {
 				popCurrentTask(previous.id)
 			}
 		}
@@ -104,7 +102,7 @@ fun SuiteDsl.currentTaskTests() = suite("Low-level") {
 
 	test("Cannot pop the root") {
 		withContext(thread1()) {
-			shouldThrow<IllegalStateException> {
+			checkThrows<IllegalStateException> {
 				popCurrentTask(TaskId())
 			}
 		}

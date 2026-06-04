@@ -1,11 +1,8 @@
 package opensavvy.sentier.threads
 
-import io.kotest.core.spec.style.StringSpec
-import opensavvy.prepared.runner.kotest.preparedSuite
+import opensavvy.prepared.runner.testballoon.preparedSuite
 
-class ThreadingTest : StringSpec({
-	preparedSuite {
-		currentTaskTests()
-		methodsTests()
-	}
-})
+val ThreadingTest by preparedSuite {
+	currentTaskTests()
+	methodsTests()
+}

@@ -1,9 +1,7 @@
 package opensavvy.sentier.threads
 
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 import opensavvy.prepared.suite.SuiteDsl
+import opensavvy.prepared.suite.assertions.checkThrows
 import opensavvy.sentier.core.Sentier
 
 fun SuiteDsl.methodsTests() = suite("High-level") {
@@ -22,7 +20,7 @@ fun SuiteDsl.methodsTests() = suite("High-level") {
 		val topLevelTask = currentTask()
 
 		logger.task({ "A child task" }) {
-			currentTask() shouldNotBe topLevelTask
+			check(currentTask() != topLevelTask)
 		}
 	}
 
@@ -31,18 +29,18 @@ fun SuiteDsl.methodsTests() = suite("High-level") {
 
 		logger.task({ "A child task" }) {}
 
-		currentTask() shouldBe topLevelTask
+		check(currentTask() == topLevelTask)
 	}
 
 	test("The task builder pops the child task even if an exception is thrown") {
 		val topLevelTask = currentTask()
 
-		shouldThrow<IllegalAccessException> {
+		checkThrows<IllegalAccessException> {
 			logger.task({ "A child task" }) {
 				throw IllegalAccessException()
 			}
 		}
 
-		currentTask() shouldBe topLevelTask
+		check(currentTask() == topLevelTask)
 	}
 }

@@ -1,6 +1,7 @@
 plugins {
 	alias(opensavvyConventions.plugins.base)
 	alias(opensavvyConventions.plugins.kotlin.library)
+	alias(libsCommon.plugins.testBalloon)
 }
 
 kotlin {
@@ -32,6 +33,12 @@ kotlin {
 		dependencies {
 			api(projects.core)
 			api(libs.kotlinx.coroutines)
+		}
+	}
+
+	val commonTest by sourceSets.getting {
+		dependencies {
+			implementation(libsCommon.bundles.testBalloon)
 		}
 	}
 }
