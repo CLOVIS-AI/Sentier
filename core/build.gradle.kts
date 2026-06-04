@@ -6,24 +6,32 @@ plugins {
 
 kotlin {
 	jvm()
-	js(IR) {
+	js {
 		browser()
 		nodejs()
 	}
 	linuxX64()
+	linuxArm64()
+	macosArm64()
 	iosArm64()
 	iosSimulatorArm64()
-	iosX64()
+	watchosArm32()
+	watchosArm64()
+	watchosSimulatorArm64()
+	tvosArm64()
+	tvosSimulatorArm64()
+	mingwX64()
+	wasmJs {
+		browser()
+		nodejs()
+	}
+	wasmWasi {
+		nodejs()
+	}
 
 	sourceSets.commonTest.dependencies {
 		implementation(libsCommon.opensavvy.prepared.testBalloon)
 		implementation(libsCommon.kotlin.test)
-	}
-
-	sourceSets.all {
-		languageSettings {
-			enableLanguageFeature("ContextParameters")
-		}
 	}
 }
 

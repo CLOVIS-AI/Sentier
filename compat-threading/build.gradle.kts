@@ -1,27 +1,18 @@
 plugins {
 	alias(opensavvyConventions.plugins.base)
 	alias(opensavvyConventions.plugins.kotlin.library)
+	alias(libsCommon.plugins.testBalloon)
 }
 
 kotlin {
 	jvm()
 
-	sourceSets.commonMain {
-		dependencies {
-			api(projects.core)
-		}
+	sourceSets.commonMain.dependencies {
+		api(projects.core)
 	}
 
-	sourceSets.commonTest {
-		dependencies {
-			implementation(libs.prepared.kotest)
-		}
-	}
-
-	sourceSets.all {
-		languageSettings {
-			enableLanguageFeature("ContextParameters")
-		}
+	sourceSets.commonTest.dependencies {
+		implementation(libsCommon.bundles.testBalloon)
 	}
 }
 
